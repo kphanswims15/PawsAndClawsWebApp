@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base target="_top">
+    <title>Canine I/O</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" 
+          integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" 
+          crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="js/scripts.js"></script>
+</head>
+
+<style>
+  <?!= include('css/loginCSS')?>
+</style>
+
+<body>
+   <div id="loginInterface">
+        <center>
+            <img id="tLogo" src= "https://0rqbug.sn.files.1drv.com/y4meav4HhoPwXLlJB7fP3QDGP4VAIkeIARbKqMIAxMgTwMHxMWIWnTISXLT2muaEHRVIX46Fvth-usMeieV2DRHNCjZmfk4pj1irSQcBXolwxKzbCk91Hl7XD6ES7Gx_MzwnRXzCxaRk6my_qR6W_TLVMfDG7opi29gDowDBrUpzLfx22tNYGK-1YWcFcplh7j2doFWFTCBghwsKruZWQcmzw?width=1072&height=1440&cropmode=none" height="360px" width="268px">
+            <H2>Welcome to Canine I/O</H2>
+            <div>
+                <label for="example-code-input" style="font-size:24px">Username:</label>
+                <div>
+                    <input type="email" placeholder="Enter Username" id="codeInput" class="playercode-field">
+                </div>
+                <label for="example-code-input" style="font-size:24px">Password</label>
+                <div>
+                    <input type="password" placeholder="Enter Password" id="passwordInput" class="playercode-field">
+                </div>
+            </div>
+            <p id="feedback" class="feedback-msg"></p>
+            <button type="button" id="loginBtn" class="login-btn">
+                Login
+            </button>
+            <br>
+            <button type="button" id="signUpBtn" class="login-btn">
+                Sign Up
+            </button>
+            <br />
+            <p><i>Version 1</i></p>
+            <p><i>&copy; 2019 The master of doors</i></p>
+        </center>
+    </div>
+
+    <div id="signUpInterface">
+        <center>
+            <H2>Sign Up for Canine I/O!</H2>
+            <div>
+                <label for="example-code-input" style="font-size:24px">Username</label>
+                <div>
+                    <input for="email" placeholder="Enter Username" id="username-input" class="playercode-field">
+                </div>
+                <label for="example-code-input" style="font-size:24px">Password</label>
+                <div>
+                    <input for="password" placeholder="Enter Password" id="password-input" class="playercode-field">
+                </div>
+                <label for="example-code-input" style="font-size:24px">Enter Password Again</label>
+                <div>
+                    <input for="password" placeholder="Enter Password Again" id="password-reinput" class="playercode-field">
+                </div>
+            </div>
+        </center>
+    </div>
+ 
+    <script>
+        var loginBtn = "loginBtn";
+
+        document.getElementById(loginBtn).onclick = function(e) {
+            // checks if the feild is empty
+            if(document.getElementById("codeInput").value == "" && document.getElementById("passwordInput").value == "") {
+                document.getElementById("feedback").innerHTML = "Pleae enter a username and password and try again";
+                return false;
+            } else if(document.getElementById("passwordInput").value == "") {
+                document.getElementById("feedback").innerHTML = "Please enter a password";
+                return false;
+            } else if(document.getElementById("codeInput").value === "") {
+                // display error message
+                document.getElementById("feedback").innerHTML = "Please enter a username and try again.";
+                return false;
+            }
+
+            // change the button to have loading icon and change the text to please wait
+            document.getElementById(loginBtn).innerHTML = '<i class="fa fa-spinner fa-spin"></i> Please wait...';
+
+            // opens the next window
+            var baseURL = <?=ScriptApp.getService().getUrl()?>;
+            window.open(baseURL+"?player="+document.getElementById("codeInput").value, "_top");
+        }
+
+        // hitting the 'return' key should auto-trigger the login
+        document.onkeypress = function(e) {
+            if(e.key === "Enter") {
+                e.preventDefault(); // prevents page from attempting to load
+                document.getElementById(loginBtn).click(); // trigger button click event
+            }
+        }
+
+        document.getElementById("signUpBtn").onclick = function(e) {
+            $("#loginInterface").hide();
+            $("#signUpInterface").show();
+        }
+
+        $(document).ready(function() {
+            $("#signUpInterface").hide();
+        });
+        
+        //Code executed to prepare page after everything is loaded
+        document.getElementById("codeInput").focus(); //put focus on the code entry field
+    </script>
+  </body>
+</html>

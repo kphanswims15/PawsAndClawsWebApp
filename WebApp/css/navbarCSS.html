@@ -1,0 +1,199 @@
+body {
+    margin: 0;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 48px;
+    left: 0;
+    background-color: #13294E;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+        padding: 16px 8px 16px 32px;
+        text-decoration: none;
+        font-size: 16px;
+        color: white;
+        display: block;
+        transition: 0.3s;
+    }
+    
+.sidenav div {
+        padding: 0px 0px 10px 6px;
+        text-decoration: none;
+        font-size: 16px;
+        color: white;
+        display: block;
+        transition: 0.3s;
+        border-bottom: 2px solid white;
+    }
+    
+.sidenav a:hover {
+            color: #13294E;
+            background-color: white;
+        }
+
+.sidenav .sidenavtitle {
+        position: absolute;
+        width:100%;
+        top: 0px;
+        left: 0px;
+        padding: 0px 0px 0px 6px;
+        font-size: 18px;
+        margin-top: 20px;
+        margin-bottom: 20px !important;
+   }
+   
+.menuItemSelected {
+         color: #13294E !important;
+         background-color: white;
+ }
+   
+.btncolortheme {
+        background-color: #13294E;
+        color: white;
+    }
+    
+.disabled {
+  color: gray;
+ }
+    
+.changedbtncolortheme {
+    background-color: green;
+    color: white;
+}
+    
+.btncolorthemeoutline {
+border: 2px
+border-color: #13294E !important;
+color: #13294E !important;
+}
+
+.navbar {
+    overflow: hidden;
+    display: block;
+    background-color: #13294E;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    align-content: center;
+    border-radius: 0px;
+    z-index: 100;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.navbar a:hover {
+    background: #ddd;
+    color: black;
+}
+
+.paddedPage {
+    padding: 36px 8px 0px 8px;
+    
+}
+
+.hide {
+display:none;
+}
+
+.glyphicon-hide {
+color: transparent;
+}
+
+.clickable-div {
+ cursor: pointer;
+}
+
+// buttons for the pages
+.button {
+background-color: #13294E; 
+color: white;
+text-align: center;
+width: 100%; 
+display: block;
+font-size: 36px;
+padding: 24px;
+}
+
+.buttonArrow {
+opacity: 0.5;
+color: lightgray;
+text-align: center;
+width: 100%;
+display: block;
+font-size: 36px;
+padding: 12px;
+}
+
+// used for the about box
+/* The Modal(background) */
+.modal {
+display: none; /* Hidden by default */
+position: fixed; /* Stay in place */
+z-index: 1; /* Sit on top */
+left: 0;
+top: 0;
+width: 100%; /* Full width */
+height: 100%; /* Full height */
+overflow: auto; /* Enable scroll if need */
+background-color: rgb(0,0,0); /* Fallback color */
+background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Header */
+.modal-header {
+padding: 2px 16px;
+background-color: black;
+color: white;
+}
+
+/* Modal Body */
+.modal-body {padding: 2px 16px;}
+
+/* Modal Content/Box */
+.modal-content {
+background-color: #fefefe;
+margin: 15% auto;
+padding: 20px;
+border: 1px solid #888;
+width: 80%; /* Could be more or less, depending on screen size */
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+animation-name: animatetop;
+animation-duration: 0.4s;
+}
+
+/* A Animation */
+@keyframes animatetop {
+from {top: -300px; opacity: 0}
+to {top: 0; opacity: 1}
+}
+
+/* The Close button */
+.close { 
+color: #aaa;
+float: right;
+font-size: 28px;
+font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+color: black;
+text-decoration: none;
+cursor: pointer;
+}
