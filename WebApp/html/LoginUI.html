@@ -26,16 +26,17 @@
             <div>
                 <label for="example-code-input" style="font-size:24px">Username:</label>
                 <div>
-                    <input type="email" placeholder="Enter Username" id="codeInput" class="playercode-field">
+                    <input type="email" placeholder="Enter Username" id="usernameInput" class="playercode-field">
                 </div>
                 <label for="example-code-input" style="font-size:24px">Password</label>
                 <div>
                     <input type="password" placeholder="Enter Password" id="passwordInput" class="playercode-field">
                 </div>
             </div>
-            <p id="feedback" class="feedback-msg"></p>
+            <p id="feedback" class="bg-danger"></p>
             <button type="button" id="loginBtn" class="btn btn-primary btn-lg btncolortheme">
-                Login
+                <span id="loginSpinner"></span>
+                <sapn id="btnLabel">Login</span>
             </button>
             <br>
             <br>
@@ -49,41 +50,73 @@
         </center>
     </div>
  
+    <div id="signUpInterface">
+        <center>
+            <H2>Sign Up for</H2>
+            <img id="tLogo" src= "https://zxqbug.bn.files.1drv.com/y4mHkrhV62YcBzQfBS3Tso5iSTELyIYicuJAp8_x6M-BJfXhrpbrLGXorCS1asKFcLdZG0xcRMjLnJuzcRJoQUIegklSal8uOkMuMGkjHSytYI5xkjPmHpNQwlfoS4_rhMriF_Ow1ucxopjA2oLNyBhUAV4XGuPRj0CF7c-KWVblh9qtakZH6-ewknl4BtzR5Uvxv2zBXy6SMUl22pANI7hHA?width=500&height=500&cropmode=none" height="300px" width="300px">
+            <div>
+                <label for="example-code-input" style="font-size:24px">Username</label>
+                <div>
+                    <input for="email" placeholder="Enter Username" id="username-input" class="playercode-field">
+                </div>
+                <label for="example-code-input" style="font-size:24px">Password</label>
+                <div>
+                    <input for="password" placeholder="Enter Password" id="password-input" class="playercode-field">
+                </div>
+                <label for="example-code-input" style="font-size:24px">Confirm Password</label>
+                <div>
+                     <input for="password" placeholder="Confirm Password" id="password-reinput" class="playercode-field">
+                </div>
+                <button type="button" id="confirmBtn" class="btn btn-primary btn-lg btncolortheme">
+                        <span id="submitBtnSpinner"></span>
+                        <sapn id="submitBtnLabel">Submit</span>
+                </button>
+            </div>
+        </center>
+    </div>
+
     <script>
         var loginBtn = "loginBtn";
+        var signUpBtn = "signUpBtn";
+        var usernameInput = "usernameInput";
+        var passwordInput = "passwordInput";
+        var feedback = "feedback";
+        var loginSpinner = "loginSpinner";
+        var btnLabel = "btnLabel";
+        var signUpInterface = "signUpInterface";
+        var username_input = "username-input";
+        var password_input = "password-input";
+        var password_reinput = "password-reinput";
 
-        document.getElementById(loginBtn).onclick = function(e) {
+        // Code excuted to prepare for the page after everything is loaded
+        $(document).ready(function() {
+            $("#content").height($(window).height());
+            $("#" + signUpInterface).hide();
+            $("#" + usernameInput).focus();
+        });
+
+        $("#" + loginBtn).click(async function(e) {
+            var username = $("#" + usernameInput).val();
             // checks if the feild is empty
-            if(document.getElementById("codeInput").value == "" && document.getElementById("passwordInput").value == "") {
-                document.getElementById("feedback").innerHTML = "Please enter a username and password and try again";
-                return false;
-            } else if(document.getElementById("passwordInput").value == "") {
-                document.getElementById("feedback").innerHTML = "Please enter a password";
-                return false;
-            } else if(document.getElementById("codeInput").value === "") {
+            if($("#" + usernameInput).val() == "" && $("#" + passwordInput).val() == "") {
                 // display error message
-                document.getElementById("feedback").innerHTML = "Please enter a username and try again.";
+                $("#" + feedback).text("Please enter a username and password.");
+                return false;
+            } else if ($("#" + usernameInput).val() == "") {
+                $("#" + feedback).text("Please enter a username.");
+                return false;
+            } else if ($("#" + passwordInput).val() == "") {
+                $("#" + feedback).text("Please enter a password");
                 return false;
             }
+            $("#" + loginSpinner).addClass("fas fa-spinner fa-spin");
+            $("#" + btnLabel).text(" Please wait...");
+        });
 
-            // change the button to have loading icon and change the text to please wait
-            document.getElementById(loginBtn).innerHTML = '<i class="fa fa-spinner fa-spin"></i> Please wait...';
-
-            // opens the next window
-            var baseURL = <?=ScriptApp.getService().getUrl()?>;
-            window.open(baseURL+"?player="+document.getElementById("codeInput").value, "_top");
-        }
-
-        // hitting the 'return' key should auto-trigger the login
-        document.onkeypress = function(e) {
-            if(e.key === "Enter") {
-                e.preventDefault(); // prevents page from attempting to load
-                document.getElementById(loginBtn).click(); // trigger button click event
-            }
-        }
-        
-        //Code executed to prepare page after everything is loaded
-        document.getElementById("codeInput").focus(); //put focus on the code entry field
+        $("#" + signUpBtn).click(async function(e) {
+            $("#loginInterface").hide();
+            $("#signUpInterface").show();
+        });
     </script>
   </body>
 </html>
