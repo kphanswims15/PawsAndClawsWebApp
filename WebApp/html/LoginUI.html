@@ -2,14 +2,16 @@
 <html>
 <head>
     <base target="_top">
-    <title>Canine I/O</title>
+    <script src="//www.google.com/jsapi"></script><script>window.parent.maeExportApis_();</script>
+    <title>Paws and Claws</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" 
-          integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" 
-          crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="js/scripts.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
 </head>
 
 <style>
@@ -19,8 +21,8 @@
 <body>
    <div id="loginInterface">
         <center>
-            <img id="tLogo" src= "https://0rqbug.sn.files.1drv.com/y4meav4HhoPwXLlJB7fP3QDGP4VAIkeIARbKqMIAxMgTwMHxMWIWnTISXLT2muaEHRVIX46Fvth-usMeieV2DRHNCjZmfk4pj1irSQcBXolwxKzbCk91Hl7XD6ES7Gx_MzwnRXzCxaRk6my_qR6W_TLVMfDG7opi29gDowDBrUpzLfx22tNYGK-1YWcFcplh7j2doFWFTCBghwsKruZWQcmzw?width=1072&height=1440&cropmode=none" height="360px" width="268px">
-            <H2>Welcome to Canine I/O</H2>
+            <H2>Welcome to</H2>
+            <img id="tLogo" src= "https://zxqbug.bn.files.1drv.com/y4mHkrhV62YcBzQfBS3Tso5iSTELyIYicuJAp8_x6M-BJfXhrpbrLGXorCS1asKFcLdZG0xcRMjLnJuzcRJoQUIegklSal8uOkMuMGkjHSytYI5xkjPmHpNQwlfoS4_rhMriF_Ow1ucxopjA2oLNyBhUAV4XGuPRj0CF7c-KWVblh9qtakZH6-ewknl4BtzR5Uvxv2zBXy6SMUl22pANI7hHA?width=500&height=500&cropmode=none" height="400px" width="400px">
             <div>
                 <label for="example-code-input" style="font-size:24px">Username:</label>
                 <div>
@@ -32,36 +34,18 @@
                 </div>
             </div>
             <p id="feedback" class="feedback-msg"></p>
-            <button type="button" id="loginBtn" class="login-btn">
+            <button type="button" id="loginBtn" class="btn btn-primary btn-lg btncolortheme">
                 Login
             </button>
             <br>
-            <button type="button" id="signUpBtn" class="login-btn">
+            <br>
+            <button type="button" id="signUpBtn" class="btn btn-primary btn-lg btncolortheme">
                 Sign Up
             </button>
             <br />
-            <p><i>Version 1</i></p>
+            <br>
+            <p><i>Version 2</i></p>
             <p><i>&copy; 2019 The master of doors</i></p>
-        </center>
-    </div>
-
-    <div id="signUpInterface">
-        <center>
-            <H2>Sign Up for Canine I/O!</H2>
-            <div>
-                <label for="example-code-input" style="font-size:24px">Username</label>
-                <div>
-                    <input for="email" placeholder="Enter Username" id="username-input" class="playercode-field">
-                </div>
-                <label for="example-code-input" style="font-size:24px">Password</label>
-                <div>
-                    <input for="password" placeholder="Enter Password" id="password-input" class="playercode-field">
-                </div>
-                <label for="example-code-input" style="font-size:24px">Enter Password Again</label>
-                <div>
-                    <input for="password" placeholder="Enter Password Again" id="password-reinput" class="playercode-field">
-                </div>
-            </div>
         </center>
     </div>
  
@@ -71,7 +55,7 @@
         document.getElementById(loginBtn).onclick = function(e) {
             // checks if the feild is empty
             if(document.getElementById("codeInput").value == "" && document.getElementById("passwordInput").value == "") {
-                document.getElementById("feedback").innerHTML = "Pleae enter a username and password and try again";
+                document.getElementById("feedback").innerHTML = "Please enter a username and password and try again";
                 return false;
             } else if(document.getElementById("passwordInput").value == "") {
                 document.getElementById("feedback").innerHTML = "Please enter a password";
@@ -97,15 +81,6 @@
                 document.getElementById(loginBtn).click(); // trigger button click event
             }
         }
-
-        document.getElementById("signUpBtn").onclick = function(e) {
-            $("#loginInterface").hide();
-            $("#signUpInterface").show();
-        }
-
-        $(document).ready(function() {
-            $("#signUpInterface").hide();
-        });
         
         //Code executed to prepare page after everything is loaded
         document.getElementById("codeInput").focus(); //put focus on the code entry field

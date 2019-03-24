@@ -28,7 +28,7 @@ function doGet(e) {
       .evaluate()
       .setSandboxMode(HtmlService.SandboxMode.IFRAME)
       .addMetaTag('viewport', 'width=device-width, initial-scale=1')
-      .setTitle("Welcome to Canine I/O")
+      .setTitle("Paws and Claws")
     }
   }
     
