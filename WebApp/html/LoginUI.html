@@ -67,11 +67,23 @@
                 <div>
                      <input for="password" placeholder="Confirm Password" id="password-reinput" class="playercode-field">
                 </div>
-                <button type="button" id="confirmBtn" class="btn btn-primary btn-lg btncolortheme">
+                <p id="feedbackSignUp" class="bg-danger"></p>
+                <br>
+                <br>
+                <div id="container" style="text-align: center">
+                    <button type="button" id="confirmBtn" class="btn btn-primary btn-lg" style="background-color: green">
                         <span id="submitBtnSpinner"></span>
                         <sapn id="submitBtnLabel">Submit</span>
-                </button>
+                    </button>
+                    <button type="button" id="cancelBtn" class="btn btn-primary btn-lg" style="background-color: green">
+                        Cancel 
+                    </button>
+                </div>
             </div>
+            <br />
+            <br>
+            <p><i>Version 2</i></p>
+            <p><i>&copy; 2019 The master of doors</i></p>
         </center>
     </div>
 
@@ -87,6 +99,11 @@
         var username_input = "username-input";
         var password_input = "password-input";
         var password_reinput = "password-reinput";
+        var submitBtn = "submitBtn";
+        var cancelBtn = "cancelBtn";
+        var loginInterface = "loginInterface";
+        var signUpInterface = "signUpInterface";
+        var feedbackSignUp = "feedbackSignUp";
 
         // Code excuted to prepare for the page after everything is loaded
         $(document).ready(function() {
@@ -98,7 +115,7 @@
         $("#" + loginBtn).click(async function(e) {
             var username = $("#" + usernameInput).val();
             // checks if the feild is empty
-            if($("#" + usernameInput).val() == "" && $("#" + passwordInput).val() == "") {
+            if ($("#" + usernameInput).val() == "" && $("#" + passwordInput).val() == "") {
                 // display error message
                 $("#" + feedback).text("Please enter a username and password.");
                 return false;
@@ -114,8 +131,35 @@
         });
 
         $("#" + signUpBtn).click(async function(e) {
-            $("#loginInterface").hide();
-            $("#signUpInterface").show();
+            $("#" + loginInterface).hide();
+            $("#" + signUpInterface).show();
+        });
+
+        $("#" + cancelBtn).click(async function(e) {
+            $("#" + signUpInterface).hide();
+            $("#" + loginInterface).show();
+        });
+
+        $("#" + submitBtn).click(async function(e) {
+            if ($("#" + username_input).val() == "" && $("#" + password_input).val() == "" && $("#" + password_reinput).val() == "") {
+                $("#" + feedbackSignUp).text("Please enter something in all of the textfields.");
+                return false;
+            } else if ($("#" + password_input).val() == "" && $("#" + password_reinput).val() == "") {
+                $("#" + feedbackSignUp).text("Please enter a password and re-enter it to confirm it");
+                return false;
+            } else if ($("#" + password_input).val() == "" && $("#" + password_reinput).val() == "") {
+                $("#" + feedbackSignUp).text("Please enter a password and confirm it.");
+                return false;
+            } else if ($("#" + password_reinput).val() == "") {
+                $("#" + feedbackSignUp).text("Please reconfirm your password.");
+                return false;
+            } else if ($("#" + username_input).val() == "") {
+                $("#" + feedbackSignUp).text("Please enter a username.");
+                return false;
+            } else if ($("#" + password_input).val() == "") {
+                $("#" + feedbackSignUp).text("Please enter a password.");
+                return false;
+            }
         });
     </script>
   </body>
