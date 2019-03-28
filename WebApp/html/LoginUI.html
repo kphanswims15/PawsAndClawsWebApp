@@ -22,17 +22,18 @@
    <div id="loginInterface">
         <center>
             <H2>Welcome to</H2>
-            <img id="tLogo" src= "https://zxqbug.bn.files.1drv.com/y4mHkrhV62YcBzQfBS3Tso5iSTELyIYicuJAp8_x6M-BJfXhrpbrLGXorCS1asKFcLdZG0xcRMjLnJuzcRJoQUIegklSal8uOkMuMGkjHSytYI5xkjPmHpNQwlfoS4_rhMriF_Ow1ucxopjA2oLNyBhUAV4XGuPRj0CF7c-KWVblh9qtakZH6-ewknl4BtzR5Uvxv2zBXy6SMUl22pANI7hHA?width=500&height=500&cropmode=none" height="400px" width="400px">
+            <img id="tLogo" src= "https://zxqbug.bn.files.1drv.com/y4mHkrhV62YcBzQfBS3Tso5iSTELyIYicuJAp8_x6M-BJfXhrpbrLGXorCS1asKFcLdZG0xcRMjLnJuzcRJoQUIegklSal8uOkMuMGkjHSytYI5xkjPmHpNQwlfoS4_rhMriF_Ow1ucxopjA2oLNyBhUAV4XGuPRj0CF7c-KWVblh9qtakZH6-ewknl4BtzR5Uvxv2zBXy6SMUl22pANI7hHA?width=500&height=500&cropmode=none" height="390px" width="390px">
             <div>
-                <label for="example-code-input" style="font-size:24px">Username:</label>
                 <div>
-                    <input type="email" placeholder="Enter Username" id="usernameInput" class="playercode-field">
+                    <label for="example-code-input" style="font-size:20px">Username:</label>
+                    <input type="email" placeholder="Enter Username" id="usernameInput" class="form-control" style="text-align: center; width: 90%">
                 </div>
-                <label for="example-code-input" style="font-size:24px">Password</label>
                 <div>
-                    <input type="password" placeholder="Enter Password" id="passwordInput" class="playercode-field">
+                    <label for="example-code-input" style="font-size:20px">Password:</label>
+                    <input type="password" placeholder="Enter Password" id="passwordInput" class="form-control" style="text-align: center; width: 90%">
                 </div>
             </div>
+            <br>
             <p id="feedback" class="bg-danger"></p>
             <button type="button" id="loginBtn" class="btn btn-primary btn-lg btncolortheme">
                 <span id="loginSpinner"></span>
@@ -57,21 +58,21 @@
             <div>
                 <label for="example-code-input" style="font-size:24px">Username</label>
                 <div>
-                    <input for="email" placeholder="Enter Username" id="username-input" class="playercode-field">
+                    <input type="text" placeholder="Enter Username" id="username-input" class="form-control input-lg" style="text-align: center; width: 90%">
                 </div>
                 <label for="example-code-input" style="font-size:24px">Password</label>
                 <div>
-                    <input for="password" placeholder="Enter Password" id="password-input" class="playercode-field">
+                    <input type="password" placeholder="Enter Password" id="password-input" class="form-control input-lg" style="text-align: center; width: 90%">
                 </div>
                 <label for="example-code-input" style="font-size:24px">Confirm Password</label>
                 <div>
-                     <input for="password" placeholder="Confirm Password" id="password-reinput" class="playercode-field">
+                     <input type="password" placeholder="Confirm Password" id="password-reinput" class="form-control input-lg" style="text-align: center; width: 90%">
                 </div>
                 <p id="feedbackSignUp" class="bg-danger"></p>
                 <br>
                 <br>
                 <div id="container" style="text-align: center">
-                    <button type="button" id="confirmBtn" class="btn btn-primary btn-lg" style="background-color: green">
+                    <button type="button" id="submitBtn" class="btn btn-primary btn-lg" style="background-color: green">
                         <span id="submitBtnSpinner"></span>
                         <sapn id="submitBtnLabel">Submit</span>
                     </button>
@@ -104,6 +105,8 @@
         var loginInterface = "loginInterface";
         var signUpInterface = "signUpInterface";
         var feedbackSignUp = "feedbackSignUp";
+        var submitBtnLabel = "submitBtnLabel";
+        var submitBtnSpinner = "submitBtnSpinner";
 
         // Code excuted to prepare for the page after everything is loaded
         $(document).ready(function() {
@@ -128,6 +131,9 @@
             }
             $("#" + loginSpinner).addClass("fas fa-spinner fa-spin");
             $("#" + btnLabel).text(" Please wait...");
+
+            var baseURL = <?=ScriptApp.getService().getUrl()?>;
+            window.open(baseURL+"?page=Welcome", "_top");
         });
 
         $("#" + signUpBtn).click(async function(e) {
@@ -159,7 +165,15 @@
             } else if ($("#" + password_input).val() == "") {
                 $("#" + feedbackSignUp).text("Please enter a password.");
                 return false;
+            } else if ($("#" + password_input).val() != $("#" + password_reinput).val()) {
+                $("#" + feedbackSignUp).text("Passwords do not match.");
+                return false;
             }
+            $("#" + submitBtnSpinner).addClass("fas fa-spinner fa-spin");
+            $("#" + submitBtnLabel).text(" Please wait...");
+
+            var baseURL = <?=ScriptApp.getService().getUrl()?>;
+            window.open(baseURL+"?page=Door", "_top");
         });
     </script>
   </body>
